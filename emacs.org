@@ -47,8 +47,9 @@ This looks like a cool replacement: [[https://github.com/emacs-dashboard/emacs-d
 ** Agenda 
 Org agenda files are saved ~$HOME/org~.
 #+BEGIN_SRC emacs-lisp
-(setq-default org-agenda-files (quote ("~/org")))
-(setq org-directory "~/org")
+  (setq-default org-agenda-files (quote ("~/org")))
+  (setq org-directory "~/org")
+  (global-set-key (kbd "C-c a") 'org-agenda)
 #+END_SRC
 
 Configure TODO keywords:
@@ -118,10 +119,15 @@ This sets up Jekyll markdown export for my aphorisms project. See [[https://orgm
            :table-of-contents nil
            :section-numbers nil)))
 #+end_src
+** Capture templates
+#+begin_src emacs-lisp
+  (global-set-key (kbd "C-c c") 'org-capture)
+  (setq org-capture-templates
+        '(("b" "Blog" entry (file+headline "~/aphorisms/org/inbox.org" "Inbox")
+           "* TITLE\n#+TITLE:\n#+DATE: %t\n#+JEKYLL_CATEGORIES:\n#+JEKYLL_LAYOUT: post\n\n%?")))
+#+end_src
 
 ** TODO org archive configuration
-** TODO Export org to jira markdown
-** TODO Compare my old emacs config
 * Dired
 Make it so if you have split windows, both with dired buffers, and you perform a rename or copy action on an item in one dired buffer, its default target is the other dired buffer.
 #+BEGIN_SRC emacs-lisp
