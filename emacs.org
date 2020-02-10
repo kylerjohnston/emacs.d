@@ -184,14 +184,12 @@ flymake-ruby for syntax checking.
 #+end_src
 ** TODO Ansible
 
-* IN PROGRESS Magit
+* Magit
 #+begin_src emacs-lisp
   (use-package magit
+    :bind ("C-x g" . magit-status)
     :ensure t)
 #+end_src
-
-#+RESULTS:
-: t
 
 * TODO Ivy
 * Start Emacs server
