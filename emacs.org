@@ -189,6 +189,9 @@ flymake-ruby for syntax checking.
   (use-package magit
     :bind ("C-x g" . magit-status)
     :ensure t)
+  (use-package evil-magit
+    :ensure t)
+  (require 'evil-magit)
 #+end_src
 
 * Diminish
@@ -211,9 +214,6 @@ flymake-ruby for syntax checking.
     :config
     (setq ivy-use-virtual-buffers t))
 #+end_src
-
-#+RESULTS:
-: counsel-rg
 
 * Start Emacs server
 #+BEGIN_SRC emacs-lisp
