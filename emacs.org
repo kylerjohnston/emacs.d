@@ -191,7 +191,30 @@ flymake-ruby for syntax checking.
     :ensure t)
 #+end_src
 
-* TODO Ivy
+* Diminish
+#+begin_src emacs-lisp
+  (use-package diminish
+    :ensure t)
+#+end_src
+
+* Ivy/Counsel/Swiper
+#+begin_src emacs-lisp
+  (use-package counsel
+    :ensure t
+    :diminish ivy-mode
+    :bind (("C-s" . swiper-isearch)
+           ("M-x" . counsel-M-x)
+           ("C-c k" . counsel-rg))
+    :init
+    (ivy-mode 1)
+    (counsel-mode 1)
+    :config
+    (setq ivy-use-virtual-buffers t))
+#+end_src
+
+#+RESULTS:
+: counsel-rg
+
 * Start Emacs server
 #+BEGIN_SRC emacs-lisp
 (server-start)
