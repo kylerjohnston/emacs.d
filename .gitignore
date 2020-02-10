@@ -4,3 +4,4 @@ elpa/
 *.bak
 transient/
 *.swp
+emacs.el
