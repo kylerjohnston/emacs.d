@@ -120,8 +120,6 @@ This sets up Jekyll markdown export for my aphorisms project. See [[https://orgm
            :section-numbers nil)))
 #+end_src
 
-*** TODO stop it from publishing a table of contents
-looks like ~table-of-contents nil~ doesn't do anything here. Make it stop.
 
 ** Capture templates
 #+begin_src emacs-lisp
@@ -132,6 +130,7 @@ looks like ~table-of-contents nil~ doesn't do anything here. Make it stop.
 #+end_src
 
 
+*** TODO  write a function to format date for Jekyll
 ** TODO org archive configuration
 * Dired
 Make it so if you have split windows, both with dired buffers, and you perform a rename or copy action on an item in one dired buffer, its default target is the other dired buffer.
