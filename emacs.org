@@ -109,16 +109,17 @@ This sets up Jekyll markdown export for my aphorisms project. See [[https://orgm
   (require 'ox)
   (require 'ox-publish)
   (setq org-publish-project-alist
-        '(("aphorisms"
-           :base-directory "~/aphorisms/org/"
-           :publishing-directory "~/aphorisms/jekyll/"
+        '(("muumuus"
+           :base-directory "~/muumuus/org/"
+           :publishing-directory "~/muumuus/jekyll/"
            :base-extension "org"
            :recursive t
            :publishing-function org-jekyll-md-publish-to-md
            :headline-levels 4
-           :table-of-contents nil
+           :with-toc nil ; don't export a table of contents
            :section-numbers nil)))
 #+end_src
+
 *** TODO stop it from publishing a table of contents
 looks like ~table-of-contents nil~ doesn't do anything here. Make it stop.
 
@@ -130,7 +131,6 @@ looks like ~table-of-contents nil~ doesn't do anything here. Make it stop.
            "* TITLE\n#+TITLE:\n#+DATE: %t\n#+JEKYLL_CATEGORIES:\n#+JEKYLL_LAYOUT: post\n\n%?")))
 #+end_src
 
-*** TODO Change the destination here to ~\~/org/index.org~ and a specific subheading
 
 ** TODO org archive configuration
 * Dired
