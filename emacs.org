@@ -126,7 +126,7 @@ looks like ~table-of-contents nil~ doesn't do anything here. Make it stop.
 #+begin_src emacs-lisp
   (global-set-key (kbd "C-c c") 'org-capture)
   (setq org-capture-templates
-        '(("b" "Blog" entry (file+headline "~/aphorisms/org/inbox.org" "Inbox")
+        '(("b" "Blog" entry (file+headline "~/org/inbox.org" "Blog ideas")
            "* TITLE\n#+TITLE:\n#+DATE: %t\n#+JEKYLL_CATEGORIES:\n#+JEKYLL_LAYOUT: post\n\n%?")))
 #+end_src
 
