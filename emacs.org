@@ -119,6 +119,9 @@ This sets up Jekyll markdown export for my aphorisms project. See [[https://orgm
            :table-of-contents nil
            :section-numbers nil)))
 #+end_src
+*** TODO stop it from publishing a table of contents
+looks like ~table-of-contents nil~ doesn't do anything here. Make it stop.
+
 ** Capture templates
 #+begin_src emacs-lisp
   (global-set-key (kbd "C-c c") 'org-capture)
@@ -126,6 +129,8 @@ This sets up Jekyll markdown export for my aphorisms project. See [[https://orgm
         '(("b" "Blog" entry (file+headline "~/aphorisms/org/inbox.org" "Inbox")
            "* TITLE\n#+TITLE:\n#+DATE: %t\n#+JEKYLL_CATEGORIES:\n#+JEKYLL_LAYOUT: post\n\n%?")))
 #+end_src
+
+*** TODO Change the destination here to ~\~/org/index.org~ and a specific subheading
 
 ** TODO org archive configuration
 * Dired
