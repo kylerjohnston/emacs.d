@@ -111,7 +111,7 @@ This sets up Jekyll markdown export for my aphorisms project. See [[https://orgm
   (setq org-publish-project-alist
         '(("muumuus"
            :base-directory "~/muumuus/org/"
-           :publishing-directory "~/muumuus/jekyll/"
+           :publishing-directory "~/muumuus/_posts"
            :base-extension "org"
            :recursive t
            :publishing-function org-jekyll-md-publish-to-md
