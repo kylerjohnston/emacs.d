@@ -1,4 +1,7 @@
 #+TITLE: Emacs Configuration
+#+JEKYLL_TAGS: emacs
+#+DATE: 2020-02-15
+
 * UI and basic configuration
 Disable blinking cursors and scroll bars and tool bars and menus, show line numbers:
 #+BEGIN_SRC emacs-lisp
@@ -109,12 +112,14 @@ By default babel will only allow you to execute emacs-lisp source code blocks. Y
 
 #+RESULTS:
 ** Publishing
-This sets up Jekyll markdown export for my aphorisms project. See [[https://orgmode.org/worg/org-tutorials/org-jekyll.html][this post on orgmode.org]].
+This sets up Jekyll markdown export for my blog. See [[https://orgmode.org/worg/org-tutorials/org-jekyll.html][this post on orgmode.org]].
 
 #+begin_src emacs-lisp
   (use-package ox-jekyll-md
     :ensure t
-    :config (setq org-jekyll-md-use-todays-date nil))
+    :config
+    (setq org-jekyll-md-use-todays-date nil)
+    (setq org-jekyll-md-include-yaml-front-matter t))
   (require 'ox)
   (require 'ox-publish)
   (setq org-publish-project-alist
@@ -126,16 +131,26 @@ This sets up Jekyll markdown export for my aphorisms project. See [[https://orgm
            :publishing-function org-jekyll-md-publish-to-md
            :headline-levels 4
            :with-toc nil ; don't export a table of contents
+           :section-numbers nil)
+          ("emacs"
+           :base-directory "~/.emacs.d/"
+           :publishing-directory "~/muumuus/_pages/"
+           :base-extension "org"
+           :recursive nil
+           :publishing-function org-jekyll-md-publish-to-md
+           :headline-levels 4
+           :with-toc t
            :section-numbers nil)))
 #+end_src
-
+*** TODO Set Jekyll permalink front matter via ox-jekyll-md
+I will need to open a pull request for this.
 
 ** Capture templates
 #+begin_src emacs-lisp
   (global-set-key (kbd "C-c c") 'org-capture)
   (setq org-capture-templates
         '(("b" "Blog" entry (file+headline "~/org/inbox.org" "Blog ideas")
-           "* TITLE\n#+TITLE:\n#+DATE: %t\n#+JEKYLL_CATEGORIES:\n#+JEKYLL_LAYOUT: post\n\n%?")))
+           "* TITLE\n#+TITLE:\n#+DATE: %t\n#+JEKYLL_TAGS:\n#+JEKYLL_LAYOUT: post\n\n%?")))
 #+end_src
 
 
