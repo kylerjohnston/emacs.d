@@ -1,5 +1,5 @@
 #+TITLE: Emacs Configuration
-* UI configuration
+* UI and basic configuration
 Disable blinking cursors and scroll bars and tool bars and menus, show line numbers:
 #+BEGIN_SRC emacs-lisp
 (blink-cursor-mode 0)
@@ -11,6 +11,15 @@ Disable blinking cursors and scroll bars and tool bars and menus, show line numb
 (global-hl-line-mode 1) ;; highlight current line
 (add-to-list 'default-frame-alist '(fullscreen . maximized)) ;; open new frames full screen
 #+END_SRC
+** Back up files to temp directory
+Everything is under version control anyway, right?
+#+begin_src emacs-lisp
+  (setq backup-directory-alist
+        `((".*" . ,temporary-file-directory)))
+  (setq auto-save-file-name-transforms
+        `((".*" ,temporary-file-directory t)))
+#+end_src
+
 ** TODO customize modeline
 ** TODO Disable the emacs splash
 This looks like a cool replacement: [[https://github.com/emacs-dashboard/emacs-dashboard][https://github.com/emacs-dashboard/emacs-dashboard]]
