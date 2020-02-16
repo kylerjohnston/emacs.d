@@ -124,7 +124,7 @@ By default Babel will only allow you to execute ~emacs-lisp~ source code blocks.
    '((emacs-lisp . t)
      (python . t)
      (ruby . t)
-     (dot . t))
+     (dot . t)))
 #+end_src
 
 ** Publishing
@@ -189,26 +189,22 @@ Evil keybindings:
     (setq company-minimum-prefix-length 2))
 #+end_src
 * Languages
+** GraphViz
+#+begin_src emacs-lisp
+  (use-package graphviz-dot-mode
+    :ensure t
+    :config
+    (setq graphviz-dot-indent-width 4))
+
+  (use-package company-graphviz-dot
+    :ensure t)
+#+end_src
+
 ** LaTeX
 Recognize ~.latex~ files as... LaTeX.
 #+BEGIN_SRC emacs-lisp
   (setq auto-mode-alist (cons '("\\.latex$" . latex-mode) auto-mode-alist))
 #+END_SRC
-** SaltStack
-#+begin_src emacs-lisp
-(use-package salt-mode
-  :ensure t
-  :config
-  (add-hook 'salt-mode-hook
-            (lambda ()
-              (flyspell-mode 1))))
-#+end_src
-** Terraform
-#+begin_src emacs-lisp
-(use-package terraform-mode
-  :ensure t)
-#+end_src
-
 ** Ruby
 Enhanced ruby mode
 #+begin_src emacs-lisp
@@ -228,6 +224,21 @@ flymake-ruby for syntax checking.
   (use-package flymake-ruby
     :ensure t
     :hook (enh-ruby-mode . flymake-ruby-load))
+#+end_src
+
+** SaltStack
+#+begin_src emacs-lisp
+(use-package salt-mode
+  :ensure t
+  :config
+  (add-hook 'salt-mode-hook
+            (lambda ()
+              (flyspell-mode 1))))
+#+end_src
+** Terraform
+#+begin_src emacs-lisp
+(use-package terraform-mode
+  :ensure t)
 #+end_src
 
 * Magit
