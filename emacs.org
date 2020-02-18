@@ -164,7 +164,10 @@ This sets up Jekyll markdown export for my blog. See [[https://orgmode.org/worg/
   (global-set-key (kbd "C-c c") 'org-capture)
   (setq org-capture-templates
         '(("b" "Blog" entry (file+headline "~/org/inbox.org" "Blog ideas")
-           "* TITLE\n#+TITLE:\n#+DATE: %t\n#+JEKYLL_TAGS:\n#+JEKYLL_LAYOUT: post\n\n%?")))
+           "* TITLE\n#+TITLE:\n#+DATE: %t\n#+JEKYLL_TAGS:\n#+JEKYLL_LAYOUT: post\n\n%?")
+          ("d" "Divide and Conquer: Algorithms on Coursera"
+           entry (file+headline "~/org/inbox.org" "Divide and Conquer: Algorithms on Coursera")
+           "* %^{Title}\n#+DATE: %t\n\n%?")))
 #+end_src
 
 * Dired
