@@ -185,12 +185,16 @@ Evil keybindings:
   (use-package company
     :ensure t
     :init (add-hook 'after-init-hook 'global-company-mode)
+    :bind
+    (:map company-active-map
+          ("<return>" . nil)
+          ("C-<return>" . company-complete-selection))
     :config
-                                          ; No delay in showing suggestions
     (setq company-idle-delay 0)
-                                          ; Show suggestions after entering 2 characters
-    (setq company-minimum-prefix-length 2))
+    (setq company-minimum-prefix-length 2)
+    (setq company-auto-complete 'company-explicit-action-p))
 #+end_src
+
 * Languages
 ** GraphViz
 #+begin_src emacs-lisp
