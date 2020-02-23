@@ -45,7 +45,7 @@ Stop cluttering working directories with back up files and save them to ~/tmp/~.
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-nord t)
+  (load-theme 'doom-tomorrow-night t)
 
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
@@ -209,24 +209,26 @@ Recognize ~.latex~ files as... LaTeX.
   (setq auto-mode-alist (cons '("\\.latex$" . latex-mode) auto-mode-alist))
 #+END_SRC
 ** Ruby
-Enhanced ruby mode
-#+begin_src emacs-lisp
-  (use-package enh-ruby-mode
-    :ensure t
-    :init
-    (add-to-list 'auto-mode-alist
-                 '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
-    (add-to-list 'interpreter-mode-alist
-                 '("ruby" . enh-ruby-mode))
-    (add-to-list 'org-src-lang-modes
-                 '("enh-ruby" . ruby)))
-#+end_src
+I had issues with syntax highlighting and identation breaking using ~enh-ruby-mode~, so I'm back to just plain ~ruby-mode~.
 
 flymake-ruby for syntax checking.
 #+begin_src emacs-lisp
   (use-package flymake-ruby
     :ensure t
-    :hook (enh-ruby-mode . flymake-ruby-load))
+    :hook (ruby-mode . flymake-ruby-load))
+#+end_src
+
+~inf-ruby~ opens ~irb~ in a buffer.
+#+begin_src emacs-lisp
+  (use-package inf-ruby
+    :ensure t)
+#+end_src
+
+~rubocop~ is a linter.
+#+begin_src emacs-lisp
+  (use-package rubocop
+    :ensure t
+    :hook (ruby-mode . rubocop-mode))
 #+end_src
 
 ** SaltStack
