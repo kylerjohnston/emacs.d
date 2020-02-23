@@ -1,6 +1,6 @@
 #+TITLE: Emacs Configuration
 #+JEKYLL_TAGS: emacs
-#+DATE: 2020-02-15
+#+DATE: 2020-02-23
 
 * Preface
 This is my literate Emacs configuration, written in org-mode and exported with [[https://github.com/gonsie/ox-jekyll-md][ox-jekyll-md]]. You can see the raw, un-exported version on my [[https://github.com/kylerjohnston/emacs.d][emacs.d GitHub repo]]. Take a look at [[https://github.com/kylerjohnston/emacs.d/blob/066ef819f41061230da541a5a6c481cd7c647409/init.el][init.el]] there, which is first read by Emacs and does some basic bootstrapping, setting up package archives and ~use-package~, and then calls ~org-babel-load-file~ on ~emacs.org~, the unexported version of this file, which pulls all the Emacs Lisp source blocks from this file, stitches them into an Emacs Lisp file called ~emacs.el~, and executes it.
