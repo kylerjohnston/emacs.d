@@ -215,9 +215,6 @@ Evil keybindings:
     :ensure t
     :config
     (setq graphviz-dot-indent-width 4))
-
-  (use-package company-graphviz-dot
-    :ensure t)
 #+end_src
 ** LaTeX
 Recognize ~.latex~ files as... LaTeX.
