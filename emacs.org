@@ -196,6 +196,19 @@ Evil keybindings:
 #+end_src
 
 * Languages
+** Ansible
+#+begin_src emacs-lisp
+  (use-package ansible
+    :ensure t
+    :config
+    (add-hook 'yaml-mode-hook '(lambda () (ansible 1))))
+
+  (use-package company-ansible
+    :ensure t
+    :config
+    (add-to-list 'company-backends 'company-ansible))
+#+end_src
+
 ** GraphViz
 #+begin_src emacs-lisp
   (use-package graphviz-dot-mode
@@ -206,12 +219,19 @@ Evil keybindings:
   (use-package company-graphviz-dot
     :ensure t)
 #+end_src
-
 ** LaTeX
 Recognize ~.latex~ files as... LaTeX.
 #+BEGIN_SRC emacs-lisp
   (setq auto-mode-alist (cons '("\\.latex$" . latex-mode) auto-mode-alist))
 #+END_SRC
+** Python
+#+begin_src emacs-lisp
+  (use-package elpy
+    :ensure t
+    :init
+    (elpy-enable))
+#+end_src
+
 ** Ruby
 I had issues with syntax highlighting and identation breaking using ~enh-ruby-mode~, so I'm back to just plain ~ruby-mode~.
 
@@ -237,12 +257,13 @@ flymake-ruby for syntax checking.
 
 ** SaltStack
 #+begin_src emacs-lisp
-(use-package salt-mode
-  :ensure t
-  :config
-  (add-hook 'salt-mode-hook
-            (lambda ()
-              (flyspell-mode 1))))
+  (use-package salt-mode
+    :ensure t
+    :config
+    (add-hook 'salt-mode-hook
+              (lambda ()
+                (flyspell-mode 1)))
+    (add-to-list 'auto-mode-alist '("\\.sls\\'" . salt-mode)))
 #+end_src
 ** Terraform
 #+begin_src emacs-lisp
