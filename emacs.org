@@ -116,6 +116,13 @@ Keybindings:
   (global-set-key (kbd "C-c C-l") 'org-insert-link)
 #+end_src
 
+Custom link abbreviations:
+#+begin_src emacs-lisp
+  (setq org-link-abbrev-alist
+        '(
+          ("jira" . "https://cashstar.atlassian.net/browse/")))
+#+end_src
+
 ** Babel
 By default Babel will only allow you to execute ~emacs-lisp~ source code blocks. You can enable Babel to allow execution of code blocks in a bunch of different languages though --- a full list is here: https://orgmode.org/manual/Languages.html#Languages
 #+begin_src emacs-lisp
