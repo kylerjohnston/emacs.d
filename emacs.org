@@ -65,11 +65,12 @@ Stop cluttering working directories with back up files and save them to ~/tmp/~.
 
 * Org mode
 ** Agenda 
-Org agenda files are saved ~$HOME/org~.
+Org agenda files are saved ~$HOME/org~ and archived under ~archive/archive-$(date)~.
 #+BEGIN_SRC emacs-lisp
   (setq-default org-agenda-files (quote ("~/org")))
   (setq org-directory "~/org")
   (global-set-key (kbd "C-c a") 'org-agenda)
+  (setq org-archive-location (concat "archive/archive-" (format-time-string "%Y%m" (current-time)) ".org_archive::"))
 #+END_SRC
 
 Configure TODO keywords:
@@ -127,10 +128,11 @@ By default Babel will only allow you to execute ~emacs-lisp~ source code blocks.
      (dot . t)))
 #+end_src
 
-** Publishing
+** Exporting and publishing
 This sets up Jekyll markdown export for my blog. See [[https://orgmode.org/worg/org-tutorials/org-jekyll.html][this post on orgmode.org]].
 
 #+begin_src emacs-lisp
+  (setq org-export-with-smart-quotes t)
   (use-package ox-jekyll-md
     :ensure t
     :config
