@@ -1,6 +1,7 @@
 #+TITLE: Emacs Configuration
 #+JEKYLL_TAGS: emacs
 #+DATE: 2020-02-23
+#+PROPERTY: header-args :results silent
 
 * Preface
 This is my literate Emacs configuration, written in org-mode and exported with [[https://github.com/gonsie/ox-jekyll-md][ox-jekyll-md]]. You can see the raw, un-exported version on my [[https://github.com/kylerjohnston/emacs.d][emacs.d GitHub repo]]. Take a look at [[https://github.com/kylerjohnston/emacs.d/blob/066ef819f41061230da541a5a6c481cd7c647409/init.el][init.el]] there, which is first read by Emacs and does some basic bootstrapping, setting up package archives and ~use-package~, and then calls ~org-babel-load-file~ on ~emacs.org~, the unexported version of this file, which pulls all the Emacs Lisp source blocks from this file, stitches them into an Emacs Lisp file called ~emacs.el~, and executes it.
@@ -53,6 +54,13 @@ Stop cluttering working directories with back up files and save them to ~/tmp/~.
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 #+END_SRC
+
+** Which Key to find keybindings
+#+begin_src emacs-lisp
+  (use-package which-key
+    :ensure t
+    :config (which-key-mode))
+#+end_src
 
 * Evil
 #+BEGIN_SRC emacs-lisp
@@ -200,11 +208,38 @@ Evil keybindings:
           ("C-<return>" . company-complete-selection))
     :config
     (setq company-idle-delay 0)
-    (setq company-minimum-prefix-length 2)
+    (setq company-minimum-prefix-length 1)
     (setq company-auto-complete 'company-explicit-action-p))
 #+end_src
 
 * Languages
+** Language Server Protocol configuration
+#+begin_src emacs-lisp
+  (use-package flycheck
+    :ensure t
+    :init (global-flycheck-mode))
+
+  (use-package lsp-mode
+    :init (setq lsp-keymap-prefix "C-c m")
+    :hook (
+           (ruby-mode . lsp)
+           (lsp-mode . lsp-enable-which-key-integration))
+    :commands lsp
+    :config (setq read-process-output-max (* 1024 1024)))
+
+  (use-package company-lsp
+    :ensure t
+    :commands company-lsp)
+
+  (use-package lsp-ui
+    :ensure t
+    :commands lsp-ui-mode)
+
+  (use-package lsp-ivy
+    :ensure t
+    :commands lsp-ivy-workspace-symbol)
+#+end_src
+
 ** Ansible
 #+begin_src emacs-lisp
   (use-package ansible
@@ -236,29 +271,6 @@ Recognize ~.latex~ files as... LaTeX.
     :ensure t
     :init
     (elpy-enable))
-#+end_src
-
-** Ruby
-I had issues with syntax highlighting and identation breaking using ~enh-ruby-mode~, so I'm back to just plain ~ruby-mode~.
-
-flymake-ruby for syntax checking.
-#+begin_src emacs-lisp
-  (use-package flymake-ruby
-    :ensure t
-    :hook (ruby-mode . flymake-ruby-load))
-#+end_src
-
-~inf-ruby~ opens ~irb~ in a buffer.
-#+begin_src emacs-lisp
-  (use-package inf-ruby
-    :ensure t)
-#+end_src
-
-~rubocop~ is a linter.
-#+begin_src emacs-lisp
-  (use-package rubocop
-    :ensure t
-    :hook (ruby-mode . rubocop-mode))
 #+end_src
 
 ** SaltStack
