@@ -284,6 +284,15 @@ Recognize ~.latex~ files as... LaTeX.
     (add-to-list 'auto-mode-alist '("\\.sls\\'" . salt-mode)))
 #+end_src
 
+** Scheme
+#+begin_src emacs-lisp
+  (use-package geiser
+    :ensure t
+    :config
+    (setq geiser-guile-binary "guile22")
+    (setq geiser-default-implementation 'guile))
+#+end_src
+
 ** Shell
 #+begin_src emacs-lisp
   (use-package flymake-shellcheck
