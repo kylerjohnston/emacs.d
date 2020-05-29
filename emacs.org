@@ -289,7 +289,7 @@ Recognize ~.latex~ files as... LaTeX.
   (use-package geiser
     :ensure t
     :config
-    (setq geiser-guile-binary "guile22")
+    (setq geiser-guile-binary "guile2.2")
     (setq geiser-default-implementation 'guile))
 #+end_src
 
