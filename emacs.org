@@ -140,7 +140,8 @@ By default Babel will only allow you to execute ~emacs-lisp~ source code blocks.
    '((emacs-lisp . t)
      (python . t)
      (ruby . t)
-     (dot . t)))
+     (dot . t)
+     (scheme . t)))
 #+end_src
 
 ** Exporting and publishing
@@ -266,13 +267,7 @@ Recognize ~.latex~ files as... LaTeX.
   (setq auto-mode-alist (cons '("\\.latex$" . latex-mode) auto-mode-alist))
 #+END_SRC
 ** Python
-#+begin_src emacs-lisp
-  (use-package elpy
-    :ensure t
-    :init
-    (elpy-enable))
-#+end_src
-
+Be sure to ~pip install `python-language-server[all]`~ and ~pip install pyls-mypy~ to work with lsp-mode.
 ** SaltStack
 #+begin_src emacs-lisp
   (use-package salt-mode
