@@ -97,6 +97,17 @@ Add a timestamp when you close a task:
 #+BEGIN_SRC emacs-lisp
 (setq-default org-log-done 'time)
 #+END_SRC
+
+Stand up custom command:
+#+begin_src emacs-lisp
+  (setq org-agenda-custom-commands
+        '(("d" "Daily standup"
+          agenda ""
+          ((org-agenda-start-day "-3d")
+           (org-agenda-span 10)
+           (org-agenda-start-with-log-mode '(closed))))))
+#+end_src
+
 ** UI/UX
 Soft-wrap lines, and don't do it mid-word.
 
