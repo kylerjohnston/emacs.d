@@ -279,6 +279,11 @@ Recognize ~.latex~ files as... LaTeX.
 #+END_SRC
 ** Python
 Be sure to ~pip install `python-language-server[all]`~ and ~pip install pyls-mypy~ to work with lsp-mode.
+#+begin_src emacs-lisp
+  (setq python-shell-interpreter "ipython"
+        python-shell-interpreter-args "console --simple-prompt"
+        python-shell-prompt-detect-failure-warning nil)
+#+end_src
 ** SaltStack
 #+begin_src emacs-lisp
   (use-package salt-mode
