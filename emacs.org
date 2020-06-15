@@ -177,6 +177,15 @@ This sets up Jekyll markdown export for my blog. See [[https://orgmode.org/worg/
            :headline-levels 4
            :with-toc nil ; don't export a table of contents
            :section-numbers nil)
+          ("recipes"
+           :base-directory "~/kb/cooking"
+           :publishing-directory "~/kb/cooking/export/"
+           :base-extension "org"
+           :recursive nil
+           :publishing-function org-latex-publish-to-pdf
+           :with-toc nil
+           :section-numbers nil
+           :author nil)
           ("emacs"
            :base-directory "~/.emacs.d/"
            :publishing-directory "~/muumuus/_pages/"
