@@ -292,6 +292,9 @@ Be sure to ~pip install `python-language-server[all]`~ and ~pip install pyls-myp
   (setq python-shell-interpreter "ipython"
         python-shell-interpreter-args "console --simple-prompt"
         python-shell-prompt-detect-failure-warning nil)
+
+  (use-package pyvenv
+    :ensure t)
 #+end_src
 ** SaltStack
 #+begin_src emacs-lisp
