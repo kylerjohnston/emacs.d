@@ -286,6 +286,11 @@ Recognize ~.latex~ files as... LaTeX.
 #+BEGIN_SRC emacs-lisp
   (setq auto-mode-alist (cons '("\\.latex$" . latex-mode) auto-mode-alist))
 #+END_SRC
+** nginx
+#+begin_src emacs-lisp
+  (use-package nginx-mode
+    :ensure t)
+#+end_src
 ** Python
 Be sure to ~pip install `python-language-server[all]`~ and ~pip install pyls-mypy~ to work with lsp-mode.
 #+begin_src emacs-lisp
