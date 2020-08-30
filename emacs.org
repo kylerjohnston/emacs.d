@@ -286,6 +286,11 @@ Recognize ~.latex~ files as... LaTeX.
 #+BEGIN_SRC emacs-lisp
   (setq auto-mode-alist (cons '("\\.latex$" . latex-mode) auto-mode-alist))
 #+END_SRC
+** Markdown
+#+begin_src emacs-lisp
+  (use-package markdown-mode
+    :ensure t)
+#+end_src
 ** nginx
 #+begin_src emacs-lisp
   (use-package nginx-mode
